@@ -5,7 +5,8 @@
   "main": "app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "set NODE_ENV=development && nodemon src/app.ts",
+    "run:dev": "set NODE_ENV=development && node src/app.ts",
+    "start:dev": "set NODE_ENV=development && node dist/app.js",
     "start:prod": "export NODE_ENV=production && nodemon src/app.ts",
     "prisma:format": "dotenv -e .env.development -- npx prisma format",
     "prisma:generate": "dotenv -e .env.development -- npx prisma generate",

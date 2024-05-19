@@ -1,5 +1,8 @@
 const page = async () => {
-  const prodcuts = await (await fetch("http://localhost:8082/products")).json();
+  const prodcuts = await (
+    await fetch("http://nodeapp:8082/products", { cache: "no-store" })
+  ).json();
+
   return (
     <div className="relative overflow-x-auto">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
