@@ -10,6 +10,8 @@ services:
     depends_on:
       - postgres
       - nodeapp
+    network:
+      - next-node
 
   nodeapp:
     build:
@@ -19,6 +21,9 @@ services:
       - "8082:8082"
     depends_on:
       - postgres
+    network:
+      - node-postgres
+      - next-node
 
   postgres:
     image: postgres
@@ -31,6 +36,12 @@ services:
       - POSTGRES_DB=prisma
     volumes:
       - pgdata:/var/lib/postgresql/data
+    network:
+      - node-postgres
+
+network:
+  next-node:
+  node-postgres:
 
 volumes:
   pgdata:
