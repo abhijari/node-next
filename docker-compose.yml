@@ -10,7 +10,9 @@ services:
     depends_on:
       - postgres
       - nodeapp
-    network:
+    environment:
+      - API_END_POINT=http://nodeapp:8082
+    networks:
       - next-node
 
   nodeapp:
@@ -21,7 +23,9 @@ services:
       - "8082:8082"
     depends_on:
       - postgres
-    network:
+    environment:
+      - NODE_ENV=development
+    networks:
       - node-postgres
       - next-node
 
@@ -36,10 +40,10 @@ services:
       - POSTGRES_DB=prisma
     volumes:
       - pgdata:/var/lib/postgresql/data
-    network:
+    networks:
       - node-postgres
 
-network:
+networks:
   next-node:
   node-postgres:
 

@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { productService } from "./products.service";
+import { categoryService } from "./categories.service";
 
-class ProductController {
+class CategoryController {
   constructor() {}
 
-  async getAllProduct(req: Request, res: Response) {
+  async getAllCategory(req: Request, res: Response) {
     try {
-      const result = await productService.getAllProduct();
+      const result = await categoryService.getAllCategory();
       res.status(200).send(result);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -14,9 +14,10 @@ class ProductController {
     }
   }
 
-  async createProduct(req: Request, res: Response) {
+  async createCategory(req: Request, res: Response) {
     try {
-      const result = await productService.createProduct(req.body);
+      console.log("first", req);
+      const result = await categoryService.createCategory(req.body);
       res.status(200).send(result);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -25,4 +26,4 @@ class ProductController {
   }
 }
 
-export const productController = new ProductController();
+export const categoryController = new CategoryController();
